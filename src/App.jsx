@@ -13,7 +13,9 @@ function App() {
     },
   }));
   const [upperLiner, upperLinerApi] = useSpring(() => ({
-    height: "80%",
+    from: {
+      height: "80%",
+    },
     config: {
       mass: 5,
       tension: 150,
@@ -21,7 +23,9 @@ function App() {
     },
   }));
   const [bottomLiner, bottomLinerApi] = useSpring(() => ({
-    height: "0%",
+    from: {
+      height: "0%",
+    },
     config: {
       mass: 5,
       tension: 150,
@@ -29,8 +33,10 @@ function App() {
     },
   }));
   const [rollerDiv, rollerDivApi] = useSpring(() => ({
-    marginLeft: 0,
-    opacity: 0,
+    from: {
+      marginLeft: 0,
+      opacity: 0,
+    },
     config: {
       mass: 5,
       tension: 150,
@@ -67,13 +73,30 @@ function App() {
         to: { opacity: 1 },
         onRest: () => {
           upperLinerApi.start({
-            height: "40%",
+            from: {
+              height: "80%",
+            },
+            to: {
+              height: "40%",
+            },
           });
           bottomLinerApi.start({
-            height: "40%",
+            from: {
+              height: "0%",
+            },
+            to: {
+              height: "40%",
+            },
           });
           rollerDivApi.start({
-            marginLeft: 10,
+            from: {
+              marginLeft: 0,
+              opacity: 0,
+            },
+            to: {
+              marginLeft: 10,
+              opacity: 1,
+            },
           });
         },
       });
