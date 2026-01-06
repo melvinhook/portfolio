@@ -1,46 +1,19 @@
 import "./App.css";
-import bg from "./assets/Fuji.jpg";
+import bg from "./assets/Fuji.jpg"; 
+import LeftRoller from "./components/leftRoller";
 import { useRef, useEffect, useState } from "react";
-import { useSpring, animated, a } from "@react-spring/web";
+import { useSpring, animated } from "@react-spring/web";
 function App() {
-  const div4 = useRef(null);
-  const [mt, setMt] = useState(300);
+  const div4 = useRef(null);  
+  const [mt, setMt] = useState(300); 
+  const [lock, setLock] = useState(false); 
+  const [status, setStatus] = useState("none")   
+  const [currentPage, setCurrentPage] = useState(1)
   const [doSomething, setDoSomething] = useState(false);
-  const [lock, setLock] = useState(false);
   const [title, titleApi] = useSpring(() => ({
-    from: {
+    from: { 
+      marginTop:0,
       opacity: 0,
-    },
-  }));
-  const [upperLiner, upperLinerApi] = useSpring(() => ({
-    from: {
-      height: "80%",
-    },
-    config: {
-      mass: 5,
-      tension: 150,
-      friction: 80,
-    },
-  }));
-  const [bottomLiner, bottomLinerApi] = useSpring(() => ({
-    from: {
-      height: "0%",
-    },
-    config: {
-      mass: 5,
-      tension: 150,
-      friction: 80,
-    },
-  }));
-  const [rollerDiv, rollerDivApi] = useSpring(() => ({
-    from: {
-      marginLeft: 0,
-      opacity: 0,
-    },
-    config: {
-      mass: 5,
-      tension: 150,
-      friction: 80,
     },
   }));
   const container = useSpring({
@@ -72,32 +45,7 @@ function App() {
       titleApi.start({
         to: { opacity: 1 },
         onRest: () => {
-          upperLinerApi.start({
-            from: {
-              height: "80%",
-            },
-            to: {
-              height: "40%",
-            },
-          });
-          bottomLinerApi.start({
-            from: {
-              height: "0%",
-            },
-            to: {
-              height: "40%",
-            },
-          });
-          rollerDivApi.start({
-            from: {
-              marginLeft: 0,
-              opacity: 0,
-            },
-            to: {
-              marginLeft: 10,
-              opacity: 1,
-            },
-          });
+          setStatus("open")
         },
       });
     },
@@ -108,10 +56,15 @@ function App() {
       if (lock) return;
       setLock(true);
       if (e.deltaY > 0) {
-        setMt((prev) => prev - 100);
+        setMt((prev) => prev - 100);   
+        setStatus("close")
+        if(currentPage > 0){
+          setCurrentPage((prev)=>prev-1)
+        }
         console.log("down");
       } else {
-        setMt((prev) => prev + 100);
+        setMt((prev) => prev + 100); 
+        setCurrentPage((prev)=>prev+1)
         console.log("up");
       }
     };
@@ -131,33 +84,18 @@ function App() {
           style={pitchBlack}
           className="absolute z-10 h-[600vh] w-full bg-black"
         ></animated.div>
-        {}
         <animated.div style={container} className="absolute">
           <div className="h-screen w-screen">
-            <animated.div
-              style={rollerDiv}
-              className="absolute h-screen text-white flex flex-col justify-center "
-            >
-              <animated.div
-                style={upperLiner}
-                className=" w-0.5 border bg-white"
-              ></animated.div>
-              <h1 className="mt-5">1 ページ</h1>
-              <animated.div
-                style={bottomLiner}
-                className=" w-0.5 border bg-white mt-5"
-              ></animated.div>
-            </animated.div>
+            <LeftRoller status={status} currentPage={currentPage} number={1}/>
             <animated.div
               style={title}
-              className="absolute  h-screen w-screen flex items-center justify-center text-white text-[25px] text-center"
-            >
+              className="absolute h-screen w-screen flex items-center justify-center text-white 2xl:text-[25px] lg:text-[20px] text-center">
               <div>
                 <p>
-                  阿<br />久<br />世<br />流
+                  阿<br/>久<br/>世<br/>流
                 </p>
                 <div className="border border-white w-15 bg-white mt-[5%]"></div>
-                <p className="text-[15px]">Axel</p>
+                <p className="2xl:text-[15px] md:text-[10px]">Axel</p>
               </div>
             </animated.div>
             <img src={bg} className="h-full w-full object-cover" />
