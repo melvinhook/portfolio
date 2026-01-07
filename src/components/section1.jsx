@@ -47,7 +47,7 @@ export default function Section1({ status, setStatus, currentPage }) {
       <LeftRoller status={status} setStatus={setStatus} currentPage={currentPage} number={1} />
       <animated.div
         style={title}
-        className="absolute h-screen w-screen flex items-center justify-center text-white 2xl:text-[25px] lg:text-[20px] text-center"
+        className=" absolute h-screen w-screen flex items-center justify-center text-white 2xl:text-[25px] lg:text-[20px] text-center"
       >
         <div>
           <p>

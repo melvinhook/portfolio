@@ -1,5 +1,5 @@
-import { animated, useSpring } from "@react-spring/web";
-import { useState } from "react";
+import { animated, useSpring } from "@react-spring/web"; 
+import { useEffect, useState } from "react";
 export default function Introduction() {   
   const[hover,setHover]=useState("")
   const experience = useSpring({
@@ -10,7 +10,7 @@ export default function Introduction() {
   }) 
   const useless = useSpring({
     to:{opacity: hover === "mainWork"? 0.5 : 1}
-  })
+  }) 
   return (
     <p className="w-100  text-[15px]">
       <span className="text-[25px] font-bold">I'm</span>
@@ -24,7 +24,7 @@ export default function Introduction() {
       <animated.span style={experience} className="cursor-pointer" onMouseEnter={()=>setHover("experience")} onMouseLeave={()=>setHover("")}> 4 Years of experience</animated.span> in app
       development, elementary public level such as <animated.span style={experience} className="cursor-pointer" onMouseEnter={()=>setHover("experience")} onMouseLeave={()=>setHover("")}>data management, API
       spreadout, deployment, and few ai generation </animated.span>. <animated.span className={"cursor-pointer"} style={mainWork} onMouseEnter={()=>setHover("mainWork")} onMouseLeave={()=>setHover("")}>Main work deployment</animated.span> is on
-      <animated.span className={"cursor-pointer"} style={mainWork} onMouseEnter={()=>setHover("mainWork")} onMouseLeave={()=>setHover("")}>JP Soundworks</animated.span>, <animated.span style={useless}>bounce with certain of Visual Art Student. The basic
+      <animated.span className={"cursor-pointer"} style={mainWork} onMouseEnter={()=>setHover("mainWork")} onMouseLeave={()=>setHover("")}> JP Soundworks</animated.span>, <animated.span style={useless}>bounce with certain of Visual Art Student. The basic
       project that has been created, after breathing in the twilight air,
       watching the sun go down at the end of the day with increasing temperature
       levels, is an RPG project with an anime character named "Joana". Tired and

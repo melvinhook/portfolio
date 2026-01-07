@@ -13,7 +13,7 @@ export default function rightRoller({ number, status, currentPage }) {
   }));
   const [container, containerApi] = useSpring(() => ({
     from: {
-      marginLeft: "10%",
+      marginRight: -10,
       opacity: 0,
     },
     config: {
@@ -33,32 +33,34 @@ export default function rightRoller({ number, status, currentPage }) {
     },
   }));
   useEffect(() => {
-    if (status === "open" && currentPage == number) {
+    if ( currentPage == number) {
       bottomLinerApi.start({
         to: { height: "100%" },
       });
       containerApi.start({
         to: {
-          marginLeft: '0%',
+          marginRight: 0,
           opacity: 1,
         },
       });
     }
   }, [status, currentPage]);
-  return (
-    <animated.div
-      style={container}
-      className="h-full  flex flex-col justify-center p-5"
-    >
+  return (   
+    <section className="h-[100%] w-screen flex flex-row justify-end ">
       <animated.div
-        style={upperLiner}
-        className="w-[0.5%] ml-[90%] border border-white"
-      ></animated.div>
-      <h1 className="text-white mt-3">{number} ページ</h1>
-      <animated.div
-        style={bottomLiner}
-        className="mt-3 w-[0.5%] ml-[90%] border border-white"
-      ></animated.div>
-    </animated.div>
+        style={container}
+        className="h-full flex flex-col justify-center p-5 "
+      >
+        <animated.div
+          style={upperLiner}
+          className="w-[0.5%] ml-[90%] border border-white"
+        ></animated.div>
+        <h1 className="text-white mt-3">{number} ページ</h1>
+        <animated.div
+          style={bottomLiner}
+          className="mt-3 w-[0.5%] ml-[90%] border border-white"
+        ></animated.div>
+      </animated.div> 
+    </section>
   );
 }

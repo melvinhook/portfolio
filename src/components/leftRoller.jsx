@@ -78,17 +78,17 @@ export default function LeftRoller({ status, setStatus, number, currentPage }) {
       <animated.div
         style={rollerDiv}
         className="absolute h-screen text-white flex flex-col justify-center"
-      >
+      > 
         <animated.div
           style={upperLiner}
-          className=" w-0.5 border bg-white"
+          className=" w-0.5  bg-white"
         ></animated.div>
         <h1 className="2xl:mt-5 md:mt-2 2xl:text-[15px] md:text-[10px]">
           {number} ページ
         </h1>
         <animated.div
           style={bottomLiner}
-          className=" w-0.5 border bg-white 2xl:mt-5 md:mt-2"
+          className=" w-0.5  bg-white 2xl:mt-5 md:mt-2"
         ></animated.div>
       </animated.div>
     </>

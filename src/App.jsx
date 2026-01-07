@@ -6,6 +6,7 @@ import { useSpring, animated } from "@react-spring/web";
 function App() {
   const div4 = useRef(null);
   const [mt, setMt] = useState(300);
+  const [pb, setPb] = useState(true);
   const [lock, setLock] = useState(false);
   const [status, setStatus] = useState("none");
   const [currentPage, setCurrentPage] = useState(0);
@@ -57,30 +58,29 @@ function App() {
     };
     window.addEventListener("wheel", handleWheel, { passive: true });
     return () => window.removeEventListener("wheel", handleWheel);
-  }, [doSomething, lock]); 
+  }, [doSomething, lock]);
   useEffect(() => {
     if (div4.current) {
       div4.current.scrollIntoView();
       setDoSomething(true);
     }
-  }, []); 
+  }, []);
   return (
     <>
       <section className="h-[600vh] w-full">
-        <animated.div
-          style={pitchBlack}
-          className="absolute z-10 h-[100vh] w-full bg-black"
-        ></animated.div>
+        {currentPage !== 2 && (
+          <animated.div
+            style={pitchBlack}
+            className="absolute z-10 mt-[300vh] h-full w-full bg-black"
+          />
+        )}
         <animated.div style={container} className="absolute">
           <Section1
             status={status}
             setStatus={setStatus}
             currentPage={currentPage}
           />
-          <Section2
-            status={status} 
-            currentPage={currentPage}
-          />
+          <Section2 status={status} currentPage={currentPage} lock={lock}/>
         </animated.div>
         <div className="h-screen w-screen flex items-center justify-center italic border">
           FREE-DIV-1
