@@ -1,5 +1,6 @@
 import "./App.css";
 import Section1 from "./components/section1";
+import Section2 from "./components/section2";
 import { useRef, useEffect, useState } from "react";
 import { useSpring, animated } from "@react-spring/web";
 function App() {
@@ -56,19 +57,19 @@ function App() {
     };
     window.addEventListener("wheel", handleWheel, { passive: true });
     return () => window.removeEventListener("wheel", handleWheel);
-  }, [doSomething, lock]);
+  }, [doSomething, lock]); 
   useEffect(() => {
     if (div4.current) {
       div4.current.scrollIntoView();
       setDoSomething(true);
     }
-  }, []);
+  }, []); 
   return (
     <>
       <section className="h-[600vh] w-full">
         <animated.div
           style={pitchBlack}
-          className="absolute z-10 h-[600vh] w-full bg-black"
+          className="absolute z-10 h-[100vh] w-full bg-black"
         ></animated.div>
         <animated.div style={container} className="absolute">
           <Section1
@@ -76,9 +77,10 @@ function App() {
             setStatus={setStatus}
             currentPage={currentPage}
           />
-          <div className="h-screen w-screen flex items-center justify-center bg-[#1b1f1e]">
-            <div className="h-[40%] w-[40%] border border-white"></div>
-          </div>
+          <Section2
+            status={status} 
+            currentPage={currentPage}
+          />
         </animated.div>
         <div className="h-screen w-screen flex items-center justify-center italic border">
           FREE-DIV-1
