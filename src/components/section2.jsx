@@ -6,9 +6,9 @@ import { useSpring, animated } from "@react-spring/web";
 import { useEffect } from "react";
 export default function Section2({ currentPage, status, lock }) {
   const [container, containerApi] = useSpring(() => ({
-    from: { marginTop: "20%" },
+    from: { marginTop: "10%" },
     config: {
-      mass: 5,
+      mass: 10,
       tension: 150,
       friction: 80,
     },
@@ -18,23 +18,32 @@ export default function Section2({ currentPage, status, lock }) {
       containerApi.start({
         marginTop: "0%",
       });
+    }else if(currentPage < 2){
+      containerApi.start({
+        marginTop: "10%",
+      });
+    }else{
+      containerApi.start({
+        marginTop: "-13%",
+      });
     }
   }, [currentPage, lock]);
   return (
-    <div className="h-screen w-screen flex justify-center item-center p-[5%] bg-[#1b1f1e]">
+    <div className="h-screen w-screen flex justify-center item-center p-[5%] bg-[#1b1f1e] ">
       <RightRoller status={status} number={2} currentPage={currentPage} />
       <animated.div
         style={container}
-        className="absolute h-[40%] w-[70%] p-[3%] text-white flex items-center justify-center "
+        className="absolute h-[80vh] w-[105vh] p-[3%] text-white flex items-center justify-cente "
       >
-        <div className="flex flex-row">
+        <div className="flex flex-row justify-between h-full">
           <Introduction />
-          <div className="2xl:h-140 xl:h-130 lg:h-120 md:h-80 2xl:w-90 xl:w-80 ml-10">
+          <div className="h-full w-full ml-[8%]">
             <img src={me} className="object-cover h-full w-full" alt="" />
           </div>
         </div>
       </animated.div>
-      {/*<RightRoller status={status} number={2} currentPage={currentPage} />*/}
+      {/*<RightRoller status={status} number={2} currentPage={currentPage} />*/} 
+      {/*BACKUP CLASS DIV PEMBUNGKUS GAMBAR :*/}
     </div>
   );
 }

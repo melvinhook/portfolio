@@ -1,6 +1,7 @@
 import "./App.css";
 import Section1 from "./components/section1";
-import Section2 from "./components/section2";
+import Section2 from "./components/section2"; 
+import Section3 from "./components/section3";
 import { useRef, useEffect, useState } from "react";
 import { useSpring, animated } from "@react-spring/web";
 function App() {
@@ -90,7 +91,8 @@ function App() {
             currentPage={currentPage} 
             setScrollIsLocked={setScrollIsLocked}
           />
-          <Section2 status={status} currentPage={currentPage} lock={lock} />
+          <Section2 status={status} currentPage={currentPage} lock={lock} /> 
+          <Section3/>
         </animated.div>
         <div className="h-screen w-screen flex items-center justify-center italic border">
           FREE-DIV-1

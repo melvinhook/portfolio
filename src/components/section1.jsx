@@ -47,11 +47,11 @@ export default function Section1({ status, setStatus, currentPage, setScrollIsLo
       <LeftRoller status={status} setStatus={setStatus} currentPage={currentPage} number={1} setScrollIsLocked={setScrollIsLocked} />
       <animated.div
         style={title}
-        className=" absolute h-screen w-screen flex items-center justify-center text-white 2xl:text-[25px] lg:text-[20px] text-center"
+        className="absolute h-screen w-screen flex items-center justify-center text-white 2xl:text-[25px] lg:text-[20px]  text-center"
       >
         <div>
           <p>
-            阿<br />久<br />世<br />流
+            阿<br/>久<br/>世<br/>流
           </p>
           <div className="border border-white w-15 bg-white mt-[5%]"></div>
           <p className="2xl:text-[15px] md:text-[10px]">Axel</p>
