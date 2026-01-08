@@ -2,7 +2,7 @@ import bg from "../assets/Fuji.jpg";
 import LeftRoller from "../components/leftRoller";
 import { useSpring, animated } from "@react-spring/web";
 import { useEffect } from "react";
-export default function Section1({ status, setStatus, currentPage }) {
+export default function Section1({ status, setStatus, currentPage, setScrollIsLocked }) {
   const [title, titleApi] = useSpring(() => ({
     from: {
       marginTop: 0,
@@ -44,7 +44,7 @@ export default function Section1({ status, setStatus, currentPage }) {
   }
   return (
     <div className="h-screen w-screen">
-      <LeftRoller status={status} setStatus={setStatus} currentPage={currentPage} number={1} />
+      <LeftRoller status={status} setStatus={setStatus} currentPage={currentPage} number={1} setScrollIsLocked={setScrollIsLocked} />
       <animated.div
         style={title}
         className=" absolute h-screen w-screen flex items-center justify-center text-white 2xl:text-[25px] lg:text-[20px] text-center"

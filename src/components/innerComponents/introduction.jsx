@@ -12,7 +12,7 @@ export default function Introduction() {
     to:{opacity: hover === "mainWork"? 0.5 : 1}
   }) 
   return (
-    <p className="w-100  text-[15px]">
+    <p className="w-100 2xl:text-[15px] xl:text-[14px] lg:text-[11px] md:text-[9px]">
       <span className="text-[25px] font-bold">I'm</span>
       <span className="text-[30px] italic"> Axel</span>
       <br />

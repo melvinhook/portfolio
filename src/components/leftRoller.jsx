@@ -1,6 +1,6 @@
 import { animated, useSpring } from "@react-spring/web";
 import { useEffect } from "react";
-export default function LeftRoller({ status, setStatus, number, currentPage }) {
+export default function LeftRoller({ status, setStatus, number, currentPage, setScrollIsLocked }) {
   const [upperLiner, upperLinerApi] = useSpring(() => ({
     from: {
       height: "80%",
@@ -42,7 +42,10 @@ export default function LeftRoller({ status, setStatus, number, currentPage }) {
       bottomLinerApi.start({
         to: {
           height: "40%",
-        },
+        }, 
+        onRest:()=>{
+          setScrollIsLocked(false)
+        }
       });
       rollerDivApi.start({
         to: {
