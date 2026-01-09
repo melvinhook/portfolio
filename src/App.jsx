@@ -3,7 +3,7 @@ import Section1 from "./components/section1";
 import Section2 from "./components/section2"; 
 import Section3 from "./components/section3";
 import { useRef, useEffect, useState } from "react";
-import { useSpring, animated } from "@react-spring/web";
+import { useSpring, animated } from "@react-spring/web"; 
 function App() {
   const div4 = useRef(null);
   const [mt, setMt] = useState(300);

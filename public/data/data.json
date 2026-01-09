@@ -1,0 +1,18 @@
+[
+    {  
+        "type" : "Sample Website",
+        "title": "Ōarai Girls Academy",
+        "desc": "Information Website about Ōarai Girls Academy",
+        "engine": "React Js, Fast API, PostgreSQL", 
+        "url":"https://orai-school.vercel.app/", 
+        "video":"bgvid_wl5ut5" 
+    },
+    { 
+        "type": "Sample Game",  
+        "title": "OBESSION", 
+        "desc": "The story of a YouTuber who likes mysteries named Joana who explores an old house where she doesn't think there are residents. What does Joana find in the house and what does the occupant of the house want?" ,
+        "engine": "RPG Maker", 
+        "url":"https://jpsoundworks.itch.io/joanas-projects-obsession", 
+        "video":"joana_dymhbt"
+    }
+]
