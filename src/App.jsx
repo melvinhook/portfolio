@@ -1,7 +1,8 @@
 import "./App.css";
 import Section1 from "./components/section1";
 import Section2 from "./components/section2"; 
-import Section3 from "./components/section3";
+import Section3 from "./components/section3"; 
+import Section4 from "./components/section4";
 import { useRef, useEffect, useState } from "react";
 import { useSpring, animated } from "@react-spring/web"; 
 function App() {
@@ -78,7 +79,7 @@ function App() {
   return (
     <>
       <section className="h-[600vh] w-full">
-        {currentPage !== 2 && (
+        {currentPage === 0  && (
           <animated.div
             style={pitchBlack}
             className="absolute z-10 mt-[300vh] h-full w-full bg-black"
@@ -92,7 +93,8 @@ function App() {
             setScrollIsLocked={setScrollIsLocked}
           />
           <Section2 status={status} currentPage={currentPage} lock={lock} /> 
-          <Section3/>
+          <Section3/>  
+          <Section4/>
         </animated.div>
         <div className="h-screen w-screen flex items-center justify-center italic border">
           FREE-DIV-1

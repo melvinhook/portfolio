@@ -1,24 +1,30 @@
 import { IoIosArrowForward } from "react-icons/io";
 import { IoIosArrowBack } from "react-icons/io";
 import { useSpring, animated } from "@react-spring/web";  
-
+import controller from "../../store/controller";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react"; 
 import store from "../../store/store";
 export default function Idx({}) {
   const {index, setIndex} = store()
-  const [hover, setHover] = useState(false); 
+  const [hover, setHover] = useState(false);  
+  const {curtain, pos, setCurtain, setPos} = controller()
   const { data } = useQuery({
     queryKey: ["project"],
     queryFn: () => fetch(),
-  });
+  }); 
+  /* 
+  if (data) setIndex((index + 1) % data.length)
+  if (data) setIndex((index - 1 + data.length) % data.length)
+  */
   const handleNext = () => {
-    if (data) setIndex((index + 1) % data.length);
+     setCurtain(true)  
+     setPos(true)
   };
   const handleBack = () => {
-    if (data) setIndex((index - 1 + data.length) % data.length);
+    setCurtain(true) 
+    setPos(false)
   }; 
-
   const hovers = useSpring({
     to: {
       marginLeft: hover ? "0vh" : "15vh",
@@ -32,9 +38,6 @@ export default function Idx({}) {
       marginTop: hover ? 0 : -5,
     },
   }); 
-
-
-
   return (
     <div className="w-[100vh] flex flex-row justify-between text-white text-[30px] e">
       <div className="h-[75vh] flex flex-col justify-center">
