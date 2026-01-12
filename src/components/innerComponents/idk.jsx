@@ -50,18 +50,18 @@ export default function Idx({}) {
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
           >
-            <h1 className="text-center font-bold 2xl:text-[25px] xl:text-[15px] lg:text-[15px] md:text-[15px]">
+            <h1 className="text-center font-bold text-[25px]">
               {data[index]?.title}
             </h1>
             <div className="w-[95vh] flex flex-row justify-center">
               <div>
-                <p className="w-[30vh] text-center 2xl:text-[20px] xl:text-[10px] lg:text-[10px] md:text-[10px]">
+                <p className="w-[30vh] text-center text-[20px]">
                   {data[index]?.desc}
                 </p>
                 <animated.div style={hovers} className="mt-1"></animated.div>
                 <animated.p
                   style={visitSite}
-                  className="text-center 2xl:text-[20px] xl:text-[10px] lg:text-[10px] md:text-[10px]"
+                  className="text-center text-[20px]"
                 >
                   Visit Site
                 </animated.p>
@@ -69,7 +69,7 @@ export default function Idx({}) {
             </div>
           </div>
         </div>
-        <h1 className="text-center font-bold 2xl:text-[25px] xl:text-[15px] lg:text-[15px] md:text-[15px]">
+        <h1 className="text-center font-bold text-[25px]">
           {data[index]?.type}
         </h1>
       </div>
