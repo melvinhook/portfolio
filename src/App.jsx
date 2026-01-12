@@ -49,13 +49,13 @@ function App() {
         if (lock) return;
         setLock(true);
         if (e.deltaY > 0) {
-          setMt((prev) => prev - 100);
+          setMt((prev) => prev !== 0 ? prev - 100 : prev - 0);
           setStatus("close");
-          setCurrentPage((prev) =>  prev + 1);
+          setCurrentPage((prev) => prev !== 3 ? prev + 1 : prev + 0);
           console.log("down");
         } else {
-          setMt((prev) => prev + 100);
-          setCurrentPage((prev) => (prev > 0 ? prev - 1 : 0));
+          setMt((prev) => prev !== 300 ? prev + 100 : prev + 0);
+          setCurrentPage((prev) => prev !== 1 ? prev - 1 : prev - 0);
           console.log("up");
         }
         console.log("Current Mt is ", mt);
@@ -76,7 +76,8 @@ function App() {
     }else{
       console.log("Scroll is free")
     }
-  },[scrollIsLocked])
+  },[scrollIsLocked]) 
+  useEffect(()=>{console.log("mt now:",mt)},[mt])
   return (
     <>
       <section className="h-[600vh] w-full">
