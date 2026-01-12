@@ -1,10 +1,10 @@
 import "./App.css";
 import Section1 from "./components/section1";
-import Section2 from "./components/section2"; 
-import Section3 from "./components/section3"; 
+import Section2 from "./components/section2";
+import Section3 from "./components/section3";
 import Section4 from "./components/section4";
 import { useRef, useEffect, useState } from "react";
-import { useSpring, animated } from "@react-spring/web"; 
+import { useSpring, animated } from "@react-spring/web";
 function App() {
   const div4 = useRef(null);
   const [mt, setMt] = useState(300);
@@ -43,20 +43,25 @@ function App() {
     },
   });
   useEffect(() => {
-    if ( scrollIsLocked == false) { 
-      console.log("Slide Logic Attempted")
+    if (scrollIsLocked == false) {
+      console.log("Slide Logic Attempted");
       const handleWheel = (e) => {
         if (lock) return;
         setLock(true);
         if (e.deltaY > 0) {
-          setMt((prev) => prev - 100);
-          setStatus("close");
-          setCurrentPage((prev) => prev + 1);
-          console.log("down");
+          setMt((prev) => (prev === 600 ? prev - 0 : prev - 100));
+          if (mt !== 600) {
+            setStatus("close");
+            setCurrentPage((prev) => prev + 1);
+            console.log("Down");
+          }
         } else {
-          setMt((prev) => prev + 100);
-          setCurrentPage((prev) => (prev > 0 ? prev - 1 : 0));
-          console.log("up");
+          setMt((prev) => (prev === 300 ? prev + 0 : prev + 100)); 
+          if(mt !== 300){
+              setCurrentPage((prev) => ( prev - 1 ));
+              console.log("Up");
+          }
+
         }
       };
       window.addEventListener("wheel", handleWheel, { passive: true });
@@ -68,18 +73,18 @@ function App() {
       div4.current.scrollIntoView();
       setDoSomething(true);
     }
-  }, []); 
-  useEffect(()=>{
-    if(scrollIsLocked){
-      console.log("Scroll is locked")
-    }else{
-      console.log("Scroll is free")
+  }, []);
+  useEffect(() => {
+    if (scrollIsLocked) {
+      console.log("Scroll is locked");
+    } else {
+      console.log("Scroll is free");
     }
-  },[scrollIsLocked])
+  }, [scrollIsLocked]);
   return (
     <>
       <section className="h-[600vh] w-full">
-        {currentPage === 0  && (
+        {currentPage === 0 && (
           <animated.div
             style={pitchBlack}
             className="absolute z-10 mt-[300vh] h-full w-full bg-black"
@@ -89,12 +94,12 @@ function App() {
           <Section1
             status={status}
             setStatus={setStatus}
-            currentPage={currentPage} 
+            currentPage={currentPage}
             setScrollIsLocked={setScrollIsLocked}
           />
-          <Section2 status={status} currentPage={currentPage} lock={lock} /> 
-          <Section3/>  
-          <Section4/>
+          <Section2 status={status} currentPage={currentPage} lock={lock} />
+          <Section3 />
+          <Section4 />
         </animated.div>
         <div className="h-screen w-screen flex items-center justify-center italic border">
           FREE-DIV-1
