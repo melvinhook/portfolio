@@ -17,7 +17,7 @@ export default function Section2({ currentPage, status, lock }) {
       containerApi.start({
         marginTop: "0%",
       });
-    }else if(currentPage < 2){
+    }else if(currentPage < 2 || currentPage > 2){
       containerApi.start({
         marginTop: "10%",
       });
