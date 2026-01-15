@@ -1,7 +1,6 @@
 import me from "../assets/Me.jpeg";
 import Introduction from "./innerComponents/introduction";
 import RightRoller from "./rightRoller";
-import "../app.css";
 import { useSpring, animated } from "@react-spring/web";
 import { useEffect } from "react";
 export default function Section2({ currentPage, status, lock }) {
